@@ -1,8 +1,6 @@
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
 from rest_framework.views import APIView
-from rest_framework.generics import get_object_or_404
 from articles.models import Article
 from articles.serializers import ArticleSerializer
 from drf_yasg.utils import swagger_auto_schema
@@ -11,9 +9,6 @@ from drf_yasg.utils import swagger_auto_schema
 
 
 class Index(APIView):
-    """
-    List all snippets, or create a new snippet.
-    """
     def get(self, request, format=None):
         if request.method == 'GET':
             articles = Article.objects.all()
